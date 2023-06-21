@@ -1,27 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html, body, :root, .app {
+  height: 100%;
+  width: 100%;
+  font-family: "DM Sans", sans-serif;
+  @apply text-gray-500;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-moz-selection { /* Code for Firefox */
+  color: #FF6B66;
+  background: #FFCD5B;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+::selection {
+  color: #FF6B66;
+  background: #FFCD5B;
+}
+
+.custom-button {
+	border-radius: 0.375rem;
+	padding-left: 2.5rem;
+  padding-right: 2.5rem;
+	padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.custom-button:hover{
+	--tw-bg-opacity: 1;
+  background-color: rgb(255 107 102 / var(--tw-bg-opacity));
+	--tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffa6a381;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FFA6A3;
+	border-radius: 15px;
 }
