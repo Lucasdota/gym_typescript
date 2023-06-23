@@ -13,8 +13,7 @@ export default function Home() {
 	const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
 	useEffect(() => {
-		if (typeof document !== "undefined") {
-			const handleScroll = () => {
+		const handleScroll = () => {
 			if (window.scrollY === 0) {
 				setIsTopOfPage(true);
 				setSelectedPage(SelectedPage.Home);
@@ -23,7 +22,6 @@ export default function Home() {
 		}
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
-		}
 	}, []);
 
   return (
