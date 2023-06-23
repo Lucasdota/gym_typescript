@@ -5,9 +5,13 @@ import image3 from "../../public/assets/image3.png"
 import image4 from "../../public/assets/image4.png"
 import image5 from "../../public/assets/image5.png"
 import image6 from "../../public/assets/image6.png"
+import { ChevronDoubleRightIcon, ChevronDoubleLeftIcon } from '@heroicons/react/24/solid'
+import fitness from "../../public/assets/fitness.png"
 import { motion } from 'framer-motion'
 import HText from '@/shared/HText'
 import Class from './Class'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 const classes: Array<ClassType> = [
   {
@@ -53,10 +57,32 @@ type Props = {
 }
 
 const OurClasses = ({setSelectedPage}: Props) => {
+  const container = document.getElementById("pictures-container");
+	const firstLi = document.querySelector("li")?.offsetWidth;
+
+  const handleScrollLeft = () => { 
+		if (container && firstLi) {
+			container.scrollBy({
+        left: -firstLi, // Scroll left by the width of the li element
+        behavior: "smooth",
+      });
+		}    
+  };
+
+  const handleScrollRight = () => {
+		if (container && firstLi) {
+			container.scrollBy({
+        left: firstLi, // Scroll right by the width of the li element
+        behavior: "smooth",
+      });  
+		}		  
+  };
+
+
 	return (
     <section
       id="ourclasses"
-      className="min-h-screen w-full bg-primary-100 pb-20 pt-28 antialiased"
+      className="min-h-screen w-full bg-primary-100 pt-28 antialiased"
     >
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.OurClasses)}
@@ -82,20 +108,42 @@ const OurClasses = ({setSelectedPage}: Props) => {
             </p>
           </div>
         </motion.div>
-        <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
-          <ul className="w-[2800px] whitespace-nowrap">
-            {classes.map((item: ClassType, index) => (
-              <Class
-                key={`${item.name}-${index}}`}
-                name={item.name}
-                description={item.description}
-                image={item.image}
-              />
-            ))}
-          </ul>
+        <div className="relative mt-10 px-12 h-fit flex justify-center items-center">
+          {/* ARROWS OVERLAY */}
+          <button
+            id="scroll-left"
+            className={`group absolute left-0 z-20 flex h-16 w-8 xs:h-10 xxl:h-24 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80`}
+            onClick={handleScrollLeft}
+          >
+            <ChevronDoubleLeftIcon className="h-6 w-6 text-gray-20 group-active:scale-75" />
+          </button>
+          <button
+            id="scroll-right"
+            className={`group absolute right-0 z-20 flex h-16 w-8 xs:h-10 xxl:h-24 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80`}
+            onClick={handleScrollRight}
+          >
+            <ChevronDoubleRightIcon className="h-6 w-6 text-gray-20 group-active:scale-75" />
+          </button>
+
+          {/* PICTURES */}
+          <div
+						id="pictures-container"
+            className="mt-2 h-fit w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap"
+          >
+            <ul className="w-fit whitespace-nowrap pb-2">
+              {classes.map((item: ClassType, index) => (
+                <Class
+                  key={`${item.name}-${index}}`}
+                  name={item.name}
+                  description={item.description}
+                  image={item.image}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
         <motion.div
-					className='mx-auto w-5/6'
+          className="mx-auto flex h-[280px] w-full p-10 pl-14 pt-20 xs:pt-5 md:pl-40"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -105,8 +153,17 @@ const OurClasses = ({setSelectedPage}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-					<p className='mt-10 py-5 text-2xl font-bold'>FUN CLASSES FOR ALL TASTES!</p>
-				</motion.div>
+          <p className="relative font-montserrat text-xl font-bold md:w-3/5 xs:text-lg">
+            &quot;Believe in yourself, push your limits, and embrace the sweat.
+            The journey to fitness may be tough, but the reward is a stronger,
+            healthier you.&quot;
+            <Image
+              alt="fitness"
+              src={fitness}
+              className="absolute -bottom-7 -right-7 h-20 w-20 rotate-12 xs:h-16 xs:w-16 md:-rotate-12"
+            />
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   );

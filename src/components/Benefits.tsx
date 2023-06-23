@@ -54,7 +54,7 @@ const Benefits = ({setSelectedPage}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <HText>DEVELOPE YOURSELF.</HText>
+          <HText>UNCOVER THE BEST OF YOU.</HText>
           <p className="my-5 text-sm">
             Our commitment to your success goes beyond the gym walls. Join our
             thriving community, where you will find support, encouragement, and

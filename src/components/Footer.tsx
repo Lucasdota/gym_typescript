@@ -3,6 +3,8 @@ import Logo from "../../public/assets/Logo.png"
 import Instagram from "../../public/assets/instagram.png"
 import Twitter from "../../public/assets/twitter.png"
 import Facebook from "../../public/assets/facebook.png"
+import Phone from "../../public/assets/Phone.png"
+
 import Link from "next/link";
 
 const Footer = () => {
@@ -18,7 +20,7 @@ const Footer = () => {
             content, including images and text, is strictly prohibited.
             Protecting our intellectual property is important to us.
           </p>
-          <p className="mt-8">© 2023 XYZ Gym. All rights reserved.</p>
+          <p className="mt-8">© 2023 GYMIT gym. All rights reserved.</p>
         </div>
 
         {/* LINKS */}
@@ -26,28 +28,32 @@ const Footer = () => {
           <h4 className="text-xl font-bold">Social Media</h4>
 					<div>
 						{/* INSTAGRAM */}
-						<Link href="" className="mt-8 flex w-fit items-center gap-2">
+						<Link href="" target="_blank" className="mt-8 flex w-fit items-center gap-2 group">
 							<Image alt="instagram-logo" src={Instagram} className="h-6 w-6" />
-							<p>Instagram</p>
+							<p className="group-hover:text-primary-300 group-hover:underline underline-offset-2">Instagram</p>
 						</Link>
 						{/* TWITTER */}
-						<Link href="" className="mt-8 flex w-fit items-center gap-2">
+						<Link href="" target="_blank" className="mt-8 flex w-fit items-center gap-2 group">
 							<Image alt="instagram-logo" src={Twitter} className="h-6 w-6" />
-							<p>Twitter</p>
+							<p className="group-hover:text-primary-300 group-hover:underline underline-offset-2">Twitter</p>
 						</Link>
 						{/* FACEBOOK */}
-						<Link href="" className="mt-8 flex w-fit items-center gap-2">
+						<Link href="" target="_blank" className="mt-8 flex w-fit items-center gap-2 group">
 							<Image alt="instagram-logo" src={Facebook} className="h-6 w-6" />
-							<p>Facebook</p>
+							<p className="group-hover:text-primary-300 group-hover:underline underline-offset-2">Facebook</p>
 						</Link>
 					</div>
         </div>
 
         {/* CONTACT */}
-        <div className="mb-16 text-left basis-1/4 md:text-right">
+        <div className="mb-16 text-left basis-1/4 md:flex md:flex-col md:items-end">
           <h4 className="text-xl font-bold">Contact Us</h4>
           <p className="mt-8">Call us for a fitness revolution.</p>
-          <p className="mt-8">(333) 999-9999</p>
+					<div className="mt-8 flex items-center w-fit gap-2">
+						<Image alt="phone-logo" src={Phone} className="w-6 h-6 md:w-8 md:h-8" />
+						<p>(333) 999-9999</p>
+					</div>
+
         </div>
       </div>
     </footer>
