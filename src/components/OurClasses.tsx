@@ -11,6 +11,7 @@ import { motion } from 'framer-motion'
 import HText from '@/shared/HText'
 import Class from './Class'
 import Image from 'next/image'
+import { useState, useRef } from 'react'
 
 const classes: Array<ClassType> = [
   {
@@ -55,30 +56,28 @@ type Props = {
 	setSelectedPage: (value: SelectedPage) => void
 }
 
-const OurClasses = ({setSelectedPage}: Props) => {
-  const container = document.getElementById("pictures-container");
-	const firstLi = document.querySelector("li")?.offsetWidth;
+const OurClasses = ({ setSelectedPage }: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleScrollLeft = () => { 
-		if (container && firstLi) {
-			container.scrollBy({
-        left: -firstLi, // Scroll left by the width of the li element
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -containerRef.current.offsetWidth,
         behavior: "smooth",
       });
-		}    
+    }
   };
 
   const handleScrollRight = () => {
-		if (container && firstLi) {
-			container.scrollBy({
-        left: firstLi, // Scroll right by the width of the li element
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: containerRef.current.offsetWidth,
         behavior: "smooth",
-      });  
-		}		  
+      });
+    }
   };
 
-
-	return (
+  return (
     <section
       id="ourclasses"
       className="min-h-screen w-full bg-primary-100 pt-28 antialiased"
@@ -107,18 +106,18 @@ const OurClasses = ({setSelectedPage}: Props) => {
             </p>
           </div>
         </motion.div>
-        <div className="relative mt-10 px-12 h-fit flex justify-center items-center">
+        <div className="relative mt-10 flex h-fit items-center justify-center px-12">
           {/* ARROWS OVERLAY */}
           <button
             id="scroll-left"
-            className={`group absolute left-0 z-20 flex h-16 w-8 xs:h-10 xxl:h-24 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80`}
+            className={`group absolute left-0 z-20 flex h-16 w-8 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80 xxl:h-24 xs:h-10`}
             onClick={handleScrollLeft}
           >
             <ChevronDoubleLeftIcon className="h-6 w-6 text-gray-20 group-active:scale-75" />
           </button>
           <button
             id="scroll-right"
-            className={`group absolute right-0 z-20 flex h-16 w-8 xs:h-10 xxl:h-24 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80`}
+            className={`group absolute right-0 z-20 flex h-16 w-8 items-center justify-center bg-primary-500 opacity-50 hover:opacity-80 xxl:h-24 xs:h-10`}
             onClick={handleScrollRight}
           >
             <ChevronDoubleRightIcon className="h-6 w-6 text-gray-20 group-active:scale-75" />
@@ -126,8 +125,9 @@ const OurClasses = ({setSelectedPage}: Props) => {
 
           {/* PICTURES */}
           <div
-						id="pictures-container"
-            className="mt-2 h-fit w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap"
+            id="pictures-container"
+            ref={containerRef}
+            className="mt-2 h-fit w-full overflow-y-hidden overflow-x-scroll whitespace-nowrap"
           >
             <ul className="w-fit whitespace-nowrap pb-2">
               {classes.map((item: ClassType, index) => (
@@ -152,7 +152,7 @@ const OurClasses = ({setSelectedPage}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <p className="relative font-montserrat text-xl font-bold md:w-3/5 xs:text-lg">
+          <p className="relative font-montserrat text-xl font-bold xs:text-lg md:w-3/5">
             &quot;Believe in yourself, push your limits, and embrace the sweat.
             The journey to fitness may be tough, but the reward is a stronger,
             healthier you.&quot;
@@ -166,6 +166,6 @@ const OurClasses = ({setSelectedPage}: Props) => {
       </motion.div>
     </section>
   );
-}
+};
 
 export default OurClasses
