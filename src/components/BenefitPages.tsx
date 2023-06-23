@@ -20,7 +20,7 @@ const BenefitPages = ({icon, title, description, setSelectedPage}: Props) => {
     <motion.div className="mt-5 rounded-md border-2 border-gray-100 px-5 py-16 text-center"
 			variants={childVariant}
 		>
-      <div className="mb-4 flex justify-center">
+      <div className="mb-4 flex justify-center" aria-hidden="true">
         <div className="rounded-full border-2 border-gray-100 bg-primary-100 p-4">{icon}</div>
       </div>
 
@@ -31,7 +31,7 @@ const BenefitPages = ({icon, title, description, setSelectedPage}: Props) => {
         onClick={() => setSelectedPage(SelectedPage.ContactUs)}
         href={`#${SelectedPage.ContactUs}`}
       >
-        <p>Learn More</p>
+        <p role="button" aria-label="learn more, go to contact us section">Learn More</p>
       </AnchorLink>
     </motion.div>
   );

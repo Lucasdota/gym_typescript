@@ -20,7 +20,7 @@ const Class = ({name, description, image}: Props) => {
         <p className="text-2xl xs:text-[14px]">{name}</p>
         <p className="mt-5 xs:mt-1 xs:text-[10px]">{description}</p>
       </div>
-      <Image alt={`${image}`} src={image} />
+      <Image alt={`${image}`} src={image} aria-hidden="true" />
     </li>
   );
 }

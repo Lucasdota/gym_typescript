@@ -43,27 +43,31 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            <Image alt="logo" src={Logo} />
+            <Image alt="logo" src={Logo} aria-hidden="true" />
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
                   <Link
+										aria-label="go to home section"
                     page="Home"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-                  <Link
+                  <Link 
+										aria-label="go to benefits section"
                     page="Benefits"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
+										aria-label="go to our classes section"
                     page="Our Classes"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
+										aria-label="go to contact us section"
                     page="Contact Us"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
@@ -71,13 +75,17 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
                 </div>
                 <div className={`${flexBetween} gap-8`}>
                   <div>Sign In</div>
-                  <ActionButton setSelectedPage={setSelectedPage}>
-                    Become a Member
-                  </ActionButton>
+									<div role='button' aria-label="Become a Member, click to go to join now section">
+										<ActionButton setSelectedPage={setSelectedPage}>
+											Become a Member
+										</ActionButton>
+									</div>
+                  
                 </div>
               </div>
             ) : (
               <button
+								aria-label="open menu"
                 className={`rounded-full bg-secondary-500 p-2 ${
                   isMenuToggled ? "opacity-0" : "opacity-100"
                 }`}
@@ -102,7 +110,7 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
           >
             {/* CLOSE ICON */}
             <motion.div className="flex justify-end p-12 pr-14 pt-8">
-              <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
+              <button aria-label="close menu" onClick={() => setIsMenuToggled(!isMenuToggled)}>
                 <XMarkIcon className="h-6 w-6 text-gray-400" />
               </button>
             </motion.div>
@@ -118,6 +126,7 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
                 }}
               >
                 <Link
+									aria-label="go to home section"
                   page="Home"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
@@ -133,6 +142,7 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
                 }}
               >
                 <Link
+									aria-label="go to benefits section"
                   page="Benefits"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
@@ -148,6 +158,7 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
                 }}
               >
                 <Link
+									aria-label="go to our classes section"
                   page="Our Classes"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
@@ -163,6 +174,7 @@ const Navbar = ({isTopOfPage, selectedPage, setSelectedPage}: Props) => {
                 }}
               >
                 <Link
+									aria-label="go to contact section"
                   page="Contact Us"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}

@@ -90,7 +90,6 @@ const ContactUs = ({setSelectedPage}: Props) => {
                     "Max length is 100 characters."}
                 </p>
               )}
-
               <input
                 className={inputStyles}
                 type="text"
@@ -127,6 +126,7 @@ const ContactUs = ({setSelectedPage}: Props) => {
               )}
 
               <button
+                aria-label="click to submit form"
                 type="submit"
                 className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:text-white"
               >
@@ -145,10 +145,18 @@ const ContactUs = ({setSelectedPage}: Props) => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-						<div className="md:before:content-evolvetext w-full before:absolute before:-bottom-24 before:-right-10 before:z-[-1]">
-							<Image className="w-full" alt="contact-us-page-graphic" src={ContactUsPageGraphic} />
-						</div>
-					</motion.div>
+            <div
+              className="w-full before:absolute before:-bottom-24 before:-right-10 before:z-[-1] md:before:content-evolvetext"
+              aria-hidden="true"
+            >
+              <Image
+                className="w-full"
+                alt="contact-us-page-graphic"
+                src={ContactUsPageGraphic}
+                aria-hidden="true"
+              />
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

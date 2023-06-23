@@ -7,6 +7,7 @@ import { SelectedPage } from "@/shared/types";
 import OurClasses from "@/components/OurClasses";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function Home() {
 	const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
@@ -26,6 +27,7 @@ export default function Home() {
 
   return (
     <main className="app bg-gray-20">
+			<Link aria-label="Skip to the join now section" href="#contactus" className="absolute top-0 opacity-0" />
       <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}

@@ -40,8 +40,15 @@ const Hero = ({setSelectedPage}: Props) => {
             }}
           >
             <div className="relative">
-              <div className="before:absolute before:-left-20 before:-top-20 before:z-[-1] md:before:content-evolvetext">
-                <Image alt="home-page-text" src={HomePageText} />
+              <div
+                className="before:absolute before:-left-20 before:-top-20 before:z-[-1] md:before:content-evolvetext"
+                aria-hidden="true"
+              >
+                <Image
+                  alt="home-page-text"
+                  src={HomePageText}
+                  aria-hidden="true"
+                />
               </div>
             </div>
             <p className="mt-8 text-sm antialiased">
@@ -67,15 +74,25 @@ const Hero = ({setSelectedPage}: Props) => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Join Now
-            </ActionButton>
+            <div
+              aria-label="join now, click to go to join now section"
+              role="button"
+            >
+              <ActionButton setSelectedPage={setSelectedPage}>
+                Join Now
+              </ActionButton>
+            </div>
             <AnchorLink
               className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
               onClick={() => setSelectedPage(SelectedPage.ContactUs)}
               href={`#${SelectedPage.ContactUs}`}
             >
-              <p>Learn More</p>
+              <p
+                role="button"
+                aria-label="learn more, go to contact us section"
+              >
+                Learn More
+              </p>
             </AnchorLink>
           </motion.div>
         </div>
@@ -85,7 +102,11 @@ const Hero = ({setSelectedPage}: Props) => {
           className="flex basis-3/5 justify-center md:z-10
 				md:ml-40 md:mt-16 md:justify-end"
         >
-          <Image alt="home-page-graphic" src={HomePageGraphic} />
+          <Image
+            alt="home-page-graphic"
+            src={HomePageGraphic}
+            aria-hidden="true"
+          />
         </div>
       </motion.div>
 

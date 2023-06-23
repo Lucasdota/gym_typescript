@@ -157,6 +157,7 @@ const OurClasses = ({ setSelectedPage }: Props) => {
             The journey to fitness may be tough, but the reward is a stronger,
             healthier you.&quot;
             <Image
+							aria-hidden="true"
               alt="fitness"
               src={fitness}
               className="absolute -bottom-7 -right-7 h-20 w-20 rotate-12 xs:h-16 xs:w-16 md:-rotate-12"

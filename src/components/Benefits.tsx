@@ -38,7 +38,10 @@ type Props = {
 
 const Benefits = ({setSelectedPage}: Props) => {
 	return (
-    <section id="benefits" className="mx-auto min-h-full w-5/6 pb-20 pt-28 antialiased">
+    <section
+      id="benefits"
+      className="mx-auto min-h-full w-5/6 pb-20 pt-28 antialiased"
+    >
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
       >
@@ -90,13 +93,17 @@ const Benefits = ({setSelectedPage}: Props) => {
             src={BenefitsPageGraphic}
             alt="benefits-page-graphic"
             className="mx-auto"
+            aria-hidden="true"
           />
 
           {/* DESCRIPTION */}
           <div>
             {/* TITLE */}
             <div className="relative">
-              <div className="before:absolute before:-left-20 before:-top-20 before:z-[-1] before:content-abstractwaves">
+              <div
+                className="before:absolute before:-left-20 before:-top-20 before:z-[-1] before:content-abstractwaves"
+                aria-hidden="true"
+              >
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
@@ -146,7 +153,11 @@ const Benefits = ({setSelectedPage}: Props) => {
 
             {/* BUTTON */}
             <div className="relative mt-16">
-              <div className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles">
+              <div
+                role="button"
+                aria-label="join now, go to join now section"
+                className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles"
+              >
                 <ActionButton setSelectedPage={setSelectedPage}>
                   Join Now
                 </ActionButton>
