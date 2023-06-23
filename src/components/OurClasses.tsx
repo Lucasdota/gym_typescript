@@ -11,7 +11,6 @@ import { motion } from 'framer-motion'
 import HText from '@/shared/HText'
 import Class from './Class'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
 
 const classes: Array<ClassType> = [
   {
