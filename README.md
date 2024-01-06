@@ -1,8 +1,8 @@
-## A Front End Project
+## GymIt - Gym website
 
-Built in VS Code with the React framework Nextjs, TailwindCSS, Typescript and Framer-Motion.
+### A gym website with animations and colors combinations.
 
-Features:
+Main features:
 
 - Dynamic navbar
 - Smooth initial animations
