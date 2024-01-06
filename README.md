@@ -11,4 +11,4 @@ Main features:
 - Responsive design
 - Accessibility guidelines followed
 
-Link: [Website](gym-typescript-sigma.vercel.app)
+Website: [click here](https://gym-typescript-sigma.vercel.app/)
